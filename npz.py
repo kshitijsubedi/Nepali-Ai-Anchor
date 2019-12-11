@@ -1,3 +1,5 @@
+# Dataset preparation 
+# Converting the dataset images to npz file for training
 
 from matplotlib import pyplot
 from os import listdir
