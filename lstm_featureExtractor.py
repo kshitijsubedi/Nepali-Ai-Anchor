@@ -1,8 +1,10 @@
-# Usage: python lstm_featureExtractor.py -vp path-to-video-files/ -sp path-to-shape-predictor-68-face-landmarks-dat -o output-file
+# Usage : python lstm_featureExtractor.py -vp path-to-video-files/ -sp path-to-shape-predictor-68-face-landmarks-dat -o output-file
 
 import numpy as np
 import cv2
+
 # Use : pip install opencv-python==3.4.2.16
+
 import math
 import copy
 import dlib
