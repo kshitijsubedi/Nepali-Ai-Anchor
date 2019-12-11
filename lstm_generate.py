@@ -1,4 +1,4 @@
-#Usage: python generate.py -i /audio-file-path/ -m /model-path/ -d 1 -c 3 -o /output-folder-path/
+#Usage : python generate.py -i /audio-file-path/ -m /model-path/ -d 1 -c 3 -o /output-folder-path/
 
 
 import tensorflow as tf
