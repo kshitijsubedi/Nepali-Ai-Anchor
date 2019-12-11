@@ -1,4 +1,5 @@
 #python train.py -i path-to-train-file/ -u number-of-hidden-units -d number-of-delay-frames -c number-of-context-frames -o output-folder-to-save-model-file
+# Training LSTM part of the project
 
 import tensorflow as tf
 import librosa
