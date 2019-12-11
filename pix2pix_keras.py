@@ -1,3 +1,7 @@
+## This Trains the Pix2Pix model with the defined epoches on batches .
+## npz file is loaded and used for training on the gan_model
+## Model is saved on every epoches.
+
 
 from numpy import load
 from numpy import zeros
@@ -76,14 +80,14 @@ def train(d_model, g_model, gan_model, dataset, n_epochs=23, n_batch=10):
 
 
 
-dataset = load_real_samples('face_256.npz')
+dataset = load_real_samples('face.npz')
 print('Loaded', dataset[0].shape, dataset[1].shape)
 image_shape = dataset[0].shape[1:]
 d_model = define_discriminator(image_shape)
 g_model = define_generator(image_shape)
 gan_model = define_gan(g_model, d_model, image_shape)
 
-######## training suru suru garau 
+######## training suru 
 train(d_model, g_model, gan_model, dataset)
 
 
@@ -100,6 +104,7 @@ def plot_images(src_img, gen_img, tar_img):
 
 
 ### test kasto vayo ta model... ##
+## randomly loads a image file and test it on the model and plot it.
 
 [X1, X2] = load_real_samples('face.npz')
 print('Loaded', X1.shape, X2.shape)
@@ -113,12 +118,14 @@ gen_image = model.predict(src_image)
 print(gen_image.shape)
 plot_images(src_image, gen_image, tar_image)
 
+# Test on a single(256,256) image.
+
 import imageio
 input_img = imageio.imread('17.jpg')
 from skimage import transform,io
 input_img = transform.resize(input_img, (256,256), mode='symmetric', preserve_range=True)
-model= load_model('model_020550.h5')
+model= load_model('model_t1.h5')
 final_img=model.predict(input_img)
 pyplot.imshow(final_img)
-#model.summary()
+model.summary()
 
