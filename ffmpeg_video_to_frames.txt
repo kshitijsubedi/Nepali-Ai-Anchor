@@ -1,1 +1,1 @@
-ffmpeg -i video.webm frames/%d.jpg -hide_banner
+ffmpeg -i misc/vid.wmv frames/%d.jpg -hide_banner
