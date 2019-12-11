@@ -17,6 +17,8 @@ def generate_fake_samples(g_model, samples, patch_shape):
 	y = zeros((len(X), patch_shape, patch_shape, 1))
 	return X, y
 
+# plot sample images using the ongoing training model
+
 def summarize_performance(step, g_model, dataset, n_samples=3):
 	[X_realA, X_realB], _ = generate_real_samples(dataset, n_samples, 1)
 	X_fakeB, _ = generate_fake_samples(g_model, X_realA, 1)
@@ -69,6 +71,7 @@ def model_save(ok):
 
 
 
+#saving the losses training in the csv file for plotting later.
 
 def graphplot(epoch,dl1,dl2,gl):
   with open('loss.csv', 'w', newline='') as file:
