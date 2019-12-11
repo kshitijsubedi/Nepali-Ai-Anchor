@@ -1,3 +1,4 @@
+# GAN Architecture definations
 
 def define_discriminator(image_shape):
 	init = RandomNormal(stddev=0.02)
