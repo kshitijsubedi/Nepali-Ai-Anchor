@@ -1,3 +1,7 @@
+## Used to combine the sketches image and the original images into a single image
+## The final image is used for the training.
+
+
 import cv2
 import numpy as np
 sketch = "./proc/"
