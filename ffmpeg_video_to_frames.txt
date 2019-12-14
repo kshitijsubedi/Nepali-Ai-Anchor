@@ -1,1 +1,11 @@
 ffmpeg -i misc/vid.wmv frames/%d.jpg -hide_banner
+
+
+
+
+ffmpeg -r 60 -f image2 -s 1920x1080 -i pic%04d.png -vcodec libx264 -crf 25  -pix_fmt yuv420p test.mp4
+
+
+ffmpeg -r 60 -f image2 -s 1280x720 -i pic%05d.png -i MP3FILE.mp3 -vcodec libx264 -b 4M -vpre normal -acodec copy OUTPUT.mp4
+
+

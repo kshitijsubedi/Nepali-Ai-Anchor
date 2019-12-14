@@ -4,16 +4,22 @@
 
 import cv2
 import numpy as np
-sketch = "./proc/"
-photo = "./orig/"
 
-for x in range(1,101):
-    sketch = sketch + str(x) + ".jpg"
-    photo = photo + str(x)+ ".jpg"
-    result = "./dataset/" + str(x) + ".jpg"
-    img1 = cv2.imread(sketch)
-    img2 = cv2.imread(photo)
-    vis = np.concatenate((img1, img2), axis=1)
-    cv2.imwrite(result, vis)
-    sketch = "./proc/"
-    photo = "./orig/"
+dim=(256,256)
+sketch = cv2.imread("/misc/sketch/1.jpg")
+cv2.imshow("",sketch)
+
+# for x in range(1,7450):
+#     sketch = cv2.imread('/misc/sketch/%d.jpg'% x ,cv2.IMREAD_UNCHANGED)
+#     photo = cv2.imread('/misc/frames/%d.jpg'% x ,cv2.IMREAD_UNCHANGED)
+
+#     print(sketch.shape)
+#     sketch = cv2.resize(sketch, dim, interpolation = cv2.INTER_AREA)
+#     photo = cv2.resize(photo, dim, interpolation = cv2.INTER_AREA)
+#     result = "/misc/dataset/" + str(x) + ".jpg"
+#     img1 = cv2.imread(sketch)
+#     img2 = cv2.imread(photo)
+#     vis = np.concatenate((img1, img2), axis=1)
+#     cv2.imwrite(result, vis)
+#     print(">>")
+
