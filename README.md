@@ -22,6 +22,8 @@ It also depends on the following packages:
 
 The code has been tested on Windows 10 and Google colab.
 
+### Project WorkFlow
+![project_workflow](wf.png)
 
 # Feature Extraction For LSTM
 You can run lstm_featureExtractor file to extract features from videos directly. The arguments are as follows:
@@ -83,7 +85,21 @@ As we know Pix2Pix is the conditional GAN (Generative Adversarial Networks) .  F
 
 ## Train Pix2Pix Network .
 1. Preparing Dataset 
- 
+- Extract frames from video (check ffmpeg_video_to_frames.txt )
+
+![alt test](imgs/5.jpg)
+- Generate facial landmark blacked images from above frames.
+```
+$ python black.py
+This uses dlib for facial landmark and opencv for drawing it on images.
+```
+![alt test](imgs/1.jpg)
+- Combine respective frames into one images 
+```
+$ python combineimage.py
+```
+![alt test](imgs/3.jpg)
+
 2. Make npz file out of the dataset
 ``` 
 $ > python npz.py
@@ -93,6 +109,10 @@ $ > python npz.py
 $ > python pix2pix_Keras.py
 ```
 > Generator Model is saved on Every Epoch and " Sample Dataset - Original - Generated " Image is saved after couple of thousand batches.
+
+### Few generated Samples Images :
+![alt test](imgs/7.jpg)
+![alt test](imgs/47.jpg)
 
 ## Now after Everything is Trained and models are generated Time to Test the Network.
 > Lets generate anchor video out of the inputted Nepali Texts.
@@ -122,15 +142,21 @@ $ python ok.py
 ```
 4. Finally you get  OUTPUT.mp4 
 
+![alt test](imgs/output.gif)
+
+
 ## Current Output Details :
-Dimension: 256*256
-Codec : H.264 (High Profile)
-Frame Rates : 26 fps
-Bit-Rate : 3660 kbps
-Audio Codec : MPEG-1 Layer 3
-Channels: Mono
-Sample Rate : 24000 Hz
-Audio Bit Rate : 32kbps
+- Dimension: 256*256
+- Codec : H.264 (High Profile)
+- Frame Rates : 26 fps
+- Bit-Rate : 3660 kbps
+- Audio Codec : MPEG-1 Layer 3
+- Channels: Mono
+- Sample Rate : 24000 Hz
+- Audio Bit Rate : 32kbps
+
+
+
 
 ## Further Works .
 - Generate High Resolution Video .
