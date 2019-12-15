@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-"# Nepali Ai Anchor" "#Nepali-Ai-Anchor"
-=======
-"# Nepali Ai Anchor" 
-"# Nepali-Ai-Anchor" 
->>>>>>> ee252fc19cef9210eea810e050d383c2228d5a02
 # First Nepali AI Anchor 
 
 
@@ -20,9 +14,11 @@ Given Nepali Unicode text of a news article, we synthesize a high quality video 
 - dlib --- 19.7.0
 - tqdm
 - subprocess
+- matplotlib
+- gTTS
 
 It also depends on the following packages:
-- ffmpeg --- 3.4.1
+- ffmpeg --- 3.4.1 (dataset generation from video clip + final frames to video conversion )
 
 The code has been tested on Windows 10 and Google colab.
 
@@ -75,11 +71,75 @@ Usage:
 $ python lstm_generate.py -i /audio-file-path/ -m /model-path/ -d 1 -c 3 -o /output-folder-path/ 
 ```
 
-<<<<<<< HEAD
+## PIX2PIX
+As we know Pix2Pix is the conditional GAN (Generative Adversarial Networks) .  For this project we used pix2pix based on U-Net Architecture.
+> Special Thanks to our Friend Swastika K.C. for the preparation of the dataset.
+### Hyper-Parameters
+-   Image Size = 256x256 (Resized)
+-   Batch Size = 1 or 4
+-   Learning Rate = 0.0002
+-   Adam_beta1 = 0.5
+-   Lambda_A = 100 (Weight of L1-Loss)
+
+## Train Pix2Pix Network .
+1. Preparing Dataset 
+ 
+2. Make npz file out of the dataset
+``` 
+$ > python npz.py
+```
+3. Train Pix2Pix 
+```
+$ > python pix2pix_Keras.py
+```
+> Generator Model is saved on Every Epoch and " Sample Dataset - Original - Generated " Image is saved after couple of thousand batches.
+
+## Now after Everything is Trained and models are generated Time to Test the Network.
+> Lets generate anchor video out of the inputted Nepali Texts.
 
 
+1. Generate mp3 file out of Inputted Text .
+> We used gTTS python module which basically uses Google Text-To-Speech API for generating speech.
+```
+$ python tts.py
 
+(Edit the python file for your custom text.)
+This should generate good.mp3 file of your text.
+```
+2. Fed the mp3 file to LSTM model and get the landmark file.
+> Refer LSTM Generate section above 
+```
+This generates the data.npz file out inputted speech file(.mp3)
+```
 
+3. Next generate frames out of data.npz and generate the  final anchor video ( along with audio yeah )
+```
+$ python ok.py
 
-=======
->>>>>>> ee252fc19cef9210eea810e050d383c2228d5a02
+> Too lazy to rename the file properly at 3 AM day before the event;)
+> This single will literally do everything from  
+"" landmark npz file parsing - landmark alignment - frame generation - pix2pix predict - final array to image - collect frames - ffmpeg video generation - adding audio layer to video - saving final output ""
+```
+4. Finally you get  OUTPUT.mp4 
+
+## Current Output Details :
+Dimension: 256*256
+Codec : H.264 (High Profile)
+Frame Rates : 26 fps
+Bit-Rate : 3660 kbps
+Audio Codec : MPEG-1 Layer 3
+Channels: Mono
+Sample Rate : 24000 Hz
+Audio Bit Rate : 32kbps
+
+## Further Works .
+- Generate High Resolution Video .
+> Target : HD video (at least 720p) 
+> Current Size : 256*256 pixels
+
+- Create Own TTS 
+-  Code with Arguments (pix2pix + prediction part)
+-  many more ......
+
+> Haven't slept properly for 5 days time But hey our hardwork pay off We Won the Competition , yay Cheers !!
+
