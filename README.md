@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 "# Nepali Ai Anchor" "#Nepali-Ai-Anchor"
+=======
+"# Nepali Ai Anchor" 
+"# Nepali-Ai-Anchor" 
+>>>>>>> ee252fc19cef9210eea810e050d383c2228d5a02
 # First Nepali AI Anchor 
 
 
@@ -70,8 +75,11 @@ Usage:
 $ python lstm_generate.py -i /audio-file-path/ -m /model-path/ -d 1 -c 3 -o /output-folder-path/ 
 ```
 
+<<<<<<< HEAD
 
 
 
 
 
+=======
+>>>>>>> ee252fc19cef9210eea810e050d383c2228d5a02
